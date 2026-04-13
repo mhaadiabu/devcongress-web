@@ -49,7 +49,7 @@ export default defineNuxtConfig({
 	},
 
 	app: {
-		baseURL: "/",
+		baseURL: "/website",
 		buildAssetsDir: "assets",
 		head: {
 			title: defaultTitle,
