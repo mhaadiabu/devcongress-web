@@ -53,7 +53,12 @@ const statusConfig = {
 
     <div class="meetups-header">
       <span class="eyebrow">Meetups</span>
-      <h2 class="heading-serif meetups-heading">Where we show up</h2>
+      <div class="meetups-title-row">
+        <h2 class="heading-serif meetups-heading">Where we show up</h2>
+        <a href="/website/meetups/" class="btn btn-outline meetups-all-btn">
+          All meetups →
+        </a>
+      </div>
     </div>
 
     <!-- Recent: horizontal scroll row, always visible -->
@@ -91,75 +96,11 @@ const statusConfig = {
       </ul>
     </div>
 
-    <!-- Earlier meetups — hidden until toggled -->
-    {earlier.length > 0 && (
-      <>
-        <div class="earlier-wrap" id="earlier-meetups" aria-hidden="true">
-          <ul class="earlier-grid">
-            {earlier.map((meetup) => {
-              const cfg        = statusConfig[meetup.status];
-              const photoCount = meetup.data.photos?.length ?? 0;
-              return (
-                <li class="meetup-card card">
-                  <a href={`/website/meetups/${meetup.slug}/`} class="meetup-cover-link" aria-hidden="true" tabindex="-1">
-                    <div class="meetup-cover" style={`background-image: url('${meetup.data.cover}')`}>
-                      <span class={`meetup-status-badge status-${meetup.status}`}>{cfg.label}</span>
-                      {photoCount > 0 && (
-                        <span class="meetup-photo-badge">{photoCount} photos</span>
-                      )}
-                    </div>
-                  </a>
-                  <div class="meetup-body">
-                    <div class="meetup-meta">
-                      <time datetime={meetup.data.start}>{formatDate(meetup.data.start)}</time>
-                      <span class="meetup-location">{meetup.data.location.name}</span>
-                    </div>
-                    <h3 class="heading-serif meetup-name">
-                      <a href={`/website/meetups/${meetup.slug}/`}>{meetup.data.name}</a>
-                    </h3>
-                    <p class="meetup-desc">{meetup.data.description}</p>
-                    <a href={`/website/meetups/${meetup.slug}/`} class="btn btn-outline meetup-cta">
-                      {cfg.cta}
-                    </a>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
 
-        <div class="earlier-toggle-wrap">
-          <button
-            id="earlier-toggle"
-            class="btn btn-outline earlier-toggle"
-            aria-expanded="false"
-            aria-controls="earlier-meetups"
-          >
-            Earlier meetups ({earlier.length}) ↓
-          </button>
-        </div>
-      </>
-    )}
 
   </div>
 </section>
 
-<script>
-  const btn  = document.getElementById('earlier-toggle');
-  const wrap = document.getElementById('earlier-meetups');
-  if (btn && wrap) {
-    btn.addEventListener('click', () => {
-      const isOpen = wrap.getAttribute('aria-hidden') === 'false';
-      wrap.setAttribute('aria-hidden', String(isOpen));
-      wrap.classList.toggle('is-open', !isOpen);
-      btn.setAttribute('aria-expanded', String(!isOpen));
-      const count = btn.textContent?.match(/\d+/)?.[0] ?? '';
-      btn.textContent = isOpen
-        ? `Earlier meetups (${count}) ↓`
-        : `Hide earlier ↑`;
-    });
-  }
-</script>
 
 <style>
   .meetups-header {
@@ -168,7 +109,22 @@ const statusConfig = {
     flex-direction: column;
     gap: var(--s2);
   }
+
+  .meetups-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s4);
+    flex-wrap: wrap;
+  }
+
   .meetups-heading { font-size: clamp(var(--text-3xl), 5vw, var(--text-4xl)); }
+
+  .meetups-all-btn {
+    font-size: var(--text-sm);
+    padding: var(--s2) var(--s5);
+    flex-shrink: 0;
+  }
 
   /* ── Horizontal scroll row ─────────────────────────────── */
   .scroll-outer {
@@ -211,30 +167,6 @@ const statusConfig = {
     }
   }
 
-  /* ── Earlier section ───────────────────────────────────── */
-  .earlier-wrap {
-    display: none;
-    margin-top: var(--s7);
-  }
-  .earlier-wrap.is-open { display: block; }
-
-  .earlier-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--s5);
-  }
-  @media (max-width: 640px) { .earlier-grid { grid-template-columns: 1fr; } }
-
-  .earlier-toggle-wrap {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--s7);
-  }
-
-  .earlier-toggle {
-    font-size: var(--text-sm);
-    padding: var(--s3) var(--s6);
-  }
 
   /* ── Shared card styles ────────────────────────────────── */
   .meetup-card { overflow: hidden; display: flex; flex-direction: column; }
