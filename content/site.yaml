@@ -48,7 +48,7 @@
       text: "Support the Mission"
       color: "outline"
     video_label: "dev:congress{}; — community highlight"
-    video_live: "● Live community"
+    video_live: "● Live Community"
 
   mission:
     - heading: Build confidence among tech talents.
