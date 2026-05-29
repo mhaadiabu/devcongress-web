@@ -78,7 +78,10 @@ const meetups = defineCollection({
     registration_url: z.string().url().nullable().optional(),
     speakers: z.array(meetupSpeakerSchema).optional(),
     schedule: z.array(scheduleItemSchema).optional(),
-    photos: z.array(z.string().url()).optional(),
+    photos: z.array(z.object({
+      url: z.string().url(),
+      type: z.enum(['image', 'folder']).default('image'),
+    })).optional(),
     videos: z.array(z.object({
       title: z.string().min(2),
       embed_url: z.string().url(),

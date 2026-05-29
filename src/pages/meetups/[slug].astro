@@ -226,7 +226,14 @@ const scheduleTypeLabel: Record<string, string> = {
           <ul class="photos-grid">
             {d.photos.map((photo, i) => (
               <li class="photo-item">
-                <img src={photo} alt={`${d.name} — photo ${i + 1}`} loading="lazy" decoding="async" />
+                {photo.type === 'folder' ? (
+                  <a href={photo.url} target="_blank" rel="noopener noreferrer" class="photo-folder-link">
+                    <span class="photo-folder-icon">📁</span>
+                    <span>Open photo folder →</span>
+                  </a>
+                ) : (
+                  <img src={photo.url} alt={`${d.name} — photo ${i + 1}`} loading="lazy" decoding="async" />
+                )}
               </li>
             ))}
           </ul>
@@ -428,9 +435,17 @@ const scheduleTypeLabel: Record<string, string> = {
   @media (min-width: 640px)  { .photos-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (min-width: 1024px) { .photos-grid { grid-template-columns: repeat(4, 1fr); } }
 
-  .photo-item { aspect-ratio: 4/3; overflow: hidden; background: var(--border-light); }
+  .photo-item { aspect-ratio: 4/3; overflow: hidden; background: var(--border-light); position: relative; }
   .photo-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms ease; }
   .photo-item:hover img { transform: scale(1.06); }
+
+  .photo-folder-link {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 100%; height: 100%; gap: var(--s2); color: var(--text-mid); font-size: var(--text-sm);
+    font-weight: 600; text-decoration: none; transition: background 200ms, color 200ms;
+  }
+  .photo-folder-link:hover { background: var(--border-light); color: var(--text); }
+  .photo-folder-icon { font-size: 2rem; }
 
   /* ── Videos ──────────────────────────────────────────── */
   .videos-section { padding-block: var(--s9); }

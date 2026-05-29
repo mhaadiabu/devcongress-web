@@ -21,7 +21,10 @@ import "strings"
 
 	schedule?: [...#ScheduleItem]
 
-	photos?: [...=~"^https?://"]
+	photos?: [...{
+		url!:  =~"^https?://"
+		type?: "image" | "folder"
+	}]
 
 	videos?: [...{
 		title!:     strings.MinRunes(2)
