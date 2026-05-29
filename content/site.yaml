@@ -72,7 +72,7 @@
   donate_section:
     eyebrow: "Support"
     heading: "Keep DevCongress running."
-    body: "DevCongress is community-funded. No corporate backing, no paywalls. Your contribution keeps the lights on and the community growing."
+    body: "DevCongress is community-funded without the strings of corporate backing. Your contribution keeps the lights on and the community growing."
     cta_text: "Donate via Paystack"
     uses_header: "Your support funds"
     uses_items:
