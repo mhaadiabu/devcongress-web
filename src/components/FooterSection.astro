@@ -56,41 +56,61 @@ const year = new Date().getFullYear();
 
 <style>
   .footer {
-    border-top: 2px solid var(--black);
-    background: var(--black);
-    color: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    border-top: 2px solid #111;
+    background:
+      radial-gradient(1200px 320px at 20% -10%, rgba(255, 217, 102, 0.14), transparent 60%),
+      linear-gradient(180deg, #0f0f11 0%, #070708 100%);
+    color: #f5f5f5;
   }
 
   .footer-body {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--s8);
+    gap: var(--s9);
     padding-block: var(--s9);
   }
-  @media (min-width: 720px) {
-    .footer-body { grid-template-columns: 2fr 1fr 1fr; }
+  @media (min-width: 860px) {
+    .footer-body { grid-template-columns: 1.7fr 1fr 1fr; }
   }
 
   .footer-brand {
     display: flex;
     flex-direction: column;
-    gap: var(--s4);
+    gap: var(--s5);
+    max-width: 40ch;
   }
 
-  /* Logo has its own yellow background — renders well on dark */
-  .footer-brand img { border-radius: 4px; }
+  .footer-brand img {
+    border-radius: 4px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  }
 
   .footer-tagline {
-    font-size: var(--text-sm);
-    color: #888;
+    font-size: var(--text-base);
+    color: #b6bbc5;
+    line-height: var(--leading-body);
   }
 
   .footer-email {
-    font-size: var(--text-sm);
-    color: #888;
-    transition: color 150ms ease;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 36px;
+    padding: 8px 14px;
+    border: 1px solid #303236;
+    border-radius: var(--r-full);
+    background: rgba(255, 255, 255, 0.03);
+    font-size: var(--text-xs);
+    color: #c1c5ce;
+    transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
   }
-  .footer-email:hover { color: var(--yellow); }
+  .footer-email:hover {
+    color: #fff;
+    border-color: #666;
+    background: rgba(255, 255, 255, 0.06);
+  }
 
   .footer-nav-label {
     font-size: var(--text-xs);
@@ -101,31 +121,56 @@ const year = new Date().getFullYear();
     margin-bottom: var(--s4);
   }
 
+  .footer-nav,
+  .footer-social {
+    display: flex;
+    flex-direction: column;
+  }
+
   .footer-nav ul,
   .footer-social ul {
     display: flex;
-    flex-direction: column;
-    gap: var(--s3);
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
-  .footer-nav a {
-    font-size: var(--text-sm);
-    color: #888;
-    transition: color 150ms ease;
-    text-transform: capitalize;
+  .footer-nav a,
+  .footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 8px 14px;
+    border: 1px solid #303236;
+    border-radius: var(--r-full);
+    background: rgba(255, 255, 255, 0.03);
+    font-size: var(--text-xs);
+    color: #b4bac6;
+    transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease;
   }
-  .footer-nav a:hover { color: #f0f0f0; }
+  .footer-nav a:hover,
+  .footer-social-link:hover {
+    color: #fff;
+    border-color: #8a6f2d;
+    background: rgba(255, 217, 102, 0.14);
+    transform: translateY(-1px);
+  }
+
+  .footer-nav a:focus-visible,
+  .footer-social-link:focus-visible {
+    outline: 2px solid var(--yellow);
+    outline-offset: 2px;
+  }
 
   .footer-social-link {
-    font-size: var(--text-sm);
-    color: #888;
     text-transform: capitalize;
-    transition: color 150ms ease;
   }
-  .footer-social-link:hover { color: var(--yellow); }
 
   .footer-bottom {
-    border-top: 1px solid #222;
+    border-top: 1px solid #22252b;
+    background: rgba(0, 0, 0, 0.24);
     padding-block: var(--s4);
   }
 
@@ -136,12 +181,12 @@ const year = new Date().getFullYear();
     flex-wrap: wrap;
     gap: var(--s3);
     font-size: var(--text-xs);
-    color: #555;
+    color: #8a8f99;
   }
 
   .footer-bottom-inner a {
-    color: #555;
+    color: #8a8f99;
     transition: color 150ms ease;
   }
-  .footer-bottom-inner a:hover { color: var(--yellow); }
+  .footer-bottom-inner a:hover { color: #d7dbe2; }
 </style>
