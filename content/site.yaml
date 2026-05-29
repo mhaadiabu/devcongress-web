@@ -22,6 +22,8 @@
       url: https://youtube.com/devcongress
     - platform: facebook
       url: https://facebook.com/devcongress
+    - platform: instagram
+      url: https://www.instagram.com/devcongress/
 
   roles:
     - Software Engineer
