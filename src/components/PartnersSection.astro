@@ -1,16 +1,11 @@
 ---
 interface Partner {
   id: string;
-  data: { name: string; logo: string; url?: string; tier?: string; };
+  data: { name: string; logo: string; url?: string; };
 }
 interface Props { partners: Partner[]; }
 const { partners } = Astro.props;
-
-const tierOrder: Record<string, number> = { gold: 1, silver: 2, community: 3 };
-const sponsors  = partners
-  .filter(p => p.data.tier === 'gold' || p.data.tier === 'silver')
-  .sort((a, b) => (tierOrder[a.data.tier!] ?? 3) - (tierOrder[b.data.tier!] ?? 3));
-const community = partners.filter(p => !p.data.tier || p.data.tier === 'community');
+const sortedPartners = [...partners].sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
 <section class="section" id="partners">
@@ -18,41 +13,18 @@ const community = partners.filter(p => !p.data.tier || p.data.tier === 'communit
     <span class="eyebrow">Partners</span>
     <h2 class="heading-serif partners-heading">Built with support</h2>
 
-    {sponsors.length > 0 && (
-      <div class="partner-group">
-        <p class="partner-group-label">Sponsors</p>
-        <ul class="partner-row">
-          {sponsors.map((p) => (
-            <li class="partner-item">
-              {p.data.url
-                ? <a href={p.data.url} target="_blank" rel="noopener noreferrer" aria-label={p.data.name}>
-                    <img src={p.data.logo} alt={p.data.name} loading="lazy" />
-                  </a>
-                : <img src={p.data.logo} alt={p.data.name} loading="lazy" />
-              }
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
-
-    {community.length > 0 && (
-      <div class="partner-group">
-        <p class="partner-group-label">Community partners</p>
-        <ul class="partner-row">
-          {community.map((p) => (
-            <li class="partner-item">
-              {p.data.url
-                ? <a href={p.data.url} target="_blank" rel="noopener noreferrer" aria-label={p.data.name}>
-                    <img src={p.data.logo} alt={p.data.name} loading="lazy" />
-                  </a>
-                : <img src={p.data.logo} alt={p.data.name} loading="lazy" />
-              }
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
+    <ul class="partner-row">
+      {sortedPartners.map((p) => (
+        <li class="partner-item">
+          {p.data.url
+            ? <a href={p.data.url} target="_blank" rel="noopener noreferrer" aria-label={p.data.name}>
+                <img src={p.data.logo} alt={p.data.name} loading="lazy" />
+              </a>
+            : <img src={p.data.logo} alt={p.data.name} loading="lazy" />
+          }
+        </li>
+      ))}
+    </ul>
   </div>
 </section>
 
@@ -62,34 +34,28 @@ const community = partners.filter(p => !p.data.tier || p.data.tier === 'communit
     margin-bottom: var(--s8);
   }
 
-  .partner-group { margin-bottom: var(--s7); }
-
-  .partner-group-label {
-    font-size: var(--text-xs);
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: var(--s5);
-  }
-
   .partner-row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--s7);
+    justify-content: flex-start;
+    column-gap: 24px;
+    row-gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .partner-item { flex: 0 0 auto; }
+
+  .partner-item a,
+  .partner-item img {
+    display: block;
   }
 
   .partner-item img {
-    max-height: 36px;
+    height: 56px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.5;
-    transition: filter 250ms ease, opacity 250ms ease;
-  }
-  .partner-item:hover img {
-    filter: grayscale(0);
-    opacity: 1;
   }
 </style>

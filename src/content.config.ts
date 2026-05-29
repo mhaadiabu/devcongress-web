@@ -35,7 +35,6 @@ const partners = defineCollection({
     name: z.string().min(1),
     logo: z.string().url(),
     url: z.string().url().optional(),
-    tier: z.enum(['gold', 'silver', 'community']).optional(),
   }),
 });
 
