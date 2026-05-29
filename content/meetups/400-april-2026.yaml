@@ -58,5 +58,19 @@ schedule:
     lead: null
     resources: []
 
-photos: []
+photos: 
+  - url: https://pbs.twimg.com/media/HGwrt-RagAAgX_-?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HGwm9MKbQAAwyPr?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HGwYEdhakAAvmCm?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HGwMz61a0AAor9d?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HGwC7dEbMAAU9os?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HGv0RwAaAAAfNVH?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HEgj8EFWgAAtqPn?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HEgjh9YXcAAubIw?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HEge8jJa0AA6Lg9?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HEgT9zma8AAX3tn?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HEgSynGbIAAuJLn?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HEgAxq1WQAAb8bc?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HEf5kkRbEAAyxIl?format=jpg&name=large
+  - url: https://pbs.twimg.com/media/HEfovhhakAAE4Fl?format=jpg&name=large 
 videos: []
