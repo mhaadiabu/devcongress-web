@@ -3,17 +3,17 @@ import tailwindcss from "@tailwindcss/vite";
 
 const siteUrl = "https://devcongress.org";
 const defaultTitle =
-	"Devcongress | Where Africa’s tech talents learn, grow, and build the future of Africa";
+	"DevCongress | Where Africa’s tech talents learn, grow, and build the future of Africa";
 const defaultDescription =
-	"Devcongress is Africa’s home for tech talents — PMs, designers, engineers, marketers, legal advisors, and sales pros. Join cohorts, mentorship, and real-world launches that turn ideas into resilient technology businesses.";
+	"DevCongress is Africa’s home for tech talents — PMs, designers, engineers, marketers, legal advisors, and sales pros. Join cohorts, mentorship, and real-world launches that turn ideas into resilient technology businesses.";
 const socialPreview = `${siteUrl}/images/devcongress-social-card.jpg`;
 const defaultOgAlt =
-	"Devcongress – community of Africa’s tech talents collaborating";
+	"DevCongress – community of Africa’s tech talents collaborating";
 
 const organizationJsonLd = {
 	"@context": "https://schema.org",
 	"@type": "Organization",
-	name: "Devcongress",
+	name: "DevCongress",
 	url: siteUrl,
 	logo: socialPreview,
 	sameAs: [
@@ -22,7 +22,7 @@ const organizationJsonLd = {
 		"https://www.linkedin.com/company/devcongress",
 	],
 	description:
-		"Devcongress is a community helping Africa’s tech talents grow through mentorship, events, and collaborative programs.",
+		"DevCongress is a community helping Africa’s tech talents grow through mentorship, events, and collaborative programs.",
 	contactPoint: [
 		{
 			"@type": "ContactPoint",
@@ -58,7 +58,7 @@ export default defineNuxtConfig({
 				{
 					name: "keywords",
 					content:
-						"Devcongress, African tech talent, developer community, tech events, mentorship, open source, Ghana tech, software engineering Africa",
+						"DevCongress, African tech talent, developer community, tech events, mentorship, open source, Ghana tech, software engineering Africa",
 				},
 				{ name: "robots", content: "index, follow" },
 				{ name: "theme-color", content: "#fb7185" },

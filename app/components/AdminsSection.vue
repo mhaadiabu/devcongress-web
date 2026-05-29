@@ -6,7 +6,7 @@
         who make
         <img
           src="/images/logo.svg"
-          alt="Devcongress Logo"
+          alt="DevCongress Logo"
           class="h-16 w-auto inline-flex"
         />
         possible.

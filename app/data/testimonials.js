@@ -23,7 +23,7 @@ export const testimonials = [
     image: "https://avatars.githubusercontent.com/u/676790?v=4",
     name: "Edem Kumodzi",
     role: "Principal Engineer",
-    quote: "Shaping others in Devcongress has been pivotal to my growth as a tech leader.",
+    quote: "Shaping others in DevCongress has been pivotal to my growth as a tech leader.",
   },
   {
     image: "https://images.squarespace-cdn.com/content/v1/64c1ced9e4d636753f2d62a9/6c6bc5a8-d5ac-4603-8620-8d7a501cae5f/Elorm+Adjaho+_+IWL+Fellow.jpg",

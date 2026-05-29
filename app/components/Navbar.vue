@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between h-16 md:h-20">
         <!-- Logo -->
         <a href="/" class="flex items-center gap-2">
-          <img src="/images/logo.svg" alt="Devcongress Logo" class="h-8 w-auto" />
+          <img src="/images/logo.svg" alt="DevCongress Logo" class="h-8 w-auto" />
         </a>
 
         <!-- Desktop Nav -->
@@ -191,7 +191,7 @@ const whatItems = [
 
 // single source of truth for both views
 const navItems = [
-  { label: "Why Devcongress", href: "#why-devcongress" },
+  { label: "Why DevCongress", href: "#why-devcongress" },
   { label: "What we’re about", children: whatItems },
 ];
 

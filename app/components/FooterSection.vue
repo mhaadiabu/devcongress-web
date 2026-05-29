@@ -25,7 +25,7 @@
               <a
                 href="#why-devcongress"
                 class="text-gray-100 hover:text-primary-500 hover:underline text-lg transition-colors"
-                >Why Devcongress</a
+                >Why DevCongress</a
               >
             </li>
             <li>
