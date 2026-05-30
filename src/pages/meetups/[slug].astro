@@ -236,7 +236,7 @@ const folderPhotos = photos.filter((photo) => photo.type === 'folder');
               <button class="tz-switch-track" role="radio" aria-checked="true" data-tz="event">
                 <span class="tz-switch-knob"></span>
               </button>
-              <span class="tz-switch-label" data-tz-label="local">My Time (CEST+2)</span>
+              <span class="tz-switch-label" data-tz-label="local">My Time</span>
             </div>
           </div>
           <h2 class="heading-serif section-heading">
@@ -495,6 +495,12 @@ const folderPhotos = photos.filter((photo) => photo.type === 'folder');
   .tz-switch-label--active {
     color: var(--text);
   }
+  .tz-switch-label--active[data-tz-label="event"] {
+    color: var(--yellow-dark);
+  }
+  .tz-switch-label--active[data-tz-label="local"] {
+    color: var(--pink);
+  }
 
   .tz-switch-track {
     position: relative;
@@ -508,7 +514,7 @@ const folderPhotos = photos.filter((photo) => photo.type === 'folder');
     transition: background 200ms ease;
   }
   .tz-switch-track[aria-checked="true"] {
-    background: var(--bg-white);
+    background: var(--yellow-bg);
   }
   .tz-switch-track[aria-checked="false"] {
     background: var(--pink-light);
@@ -702,6 +708,14 @@ const folderPhotos = photos.filter((photo) => photo.type === 'folder');
       return d.toLocaleTimeString('en-GB', fmtOpts(tz, { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }));
     }
 
+    function getUserTZLabel() {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const parts = new Intl.DateTimeFormat('en', {
+        timeZone: tz, timeZoneName: 'shortOffset',
+      }).formatToParts();
+      return parts.find(p => p.type === 'timeZoneName')?.value || tz;
+    }
+
     function applyTimezone(tz) {
       document.querySelectorAll('[data-utc]').forEach(el => {
         const iso = el.dataset.utc;
@@ -722,11 +736,15 @@ const folderPhotos = photos.filter((photo) => photo.type === 'folder');
         const isActive = lbl.dataset.tzLabel === 'local' ? tz === 'local' : tz !== 'local';
         lbl.classList.toggle('tz-switch-label--active', isActive);
       });
+      const localLabel = document.querySelector('[data-tz-label="local"]');
+      if (localLabel) {
+        localLabel.textContent = 'My Time (' + getUserTZLabel() + ')';
+      }
     }
 
     if (tzSwitch) {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === 'local') applyTimezone('local');
+      applyTimezone(saved === 'local' ? 'local' : EVENT_TZ);
 
       tzSwitch.addEventListener('click', () => {
         const track = document.querySelector('.tz-switch-track');
