@@ -412,6 +412,7 @@ const folderPhotos = photos.filter((photo) => photo.type === 'folder');
   .stream-section { padding-block: var(--s8); border-bottom: 2px solid var(--black); }
   .live-eyebrow { color: var(--pink); }
   .stream-wrap { overflow: hidden; margin-top: var(--s5); box-shadow: 8px 8px 0 var(--pink); }
+  .stream-wrap:hover { transform: translate(8px, 8px); box-shadow: 0 0 0 transparent; }
   .stream-wrap iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
   .btn-stream-link { margin-top: var(--s5); }
 
@@ -421,6 +422,10 @@ const folderPhotos = photos.filter((photo) => photo.type === 'folder');
     display: flex; flex-wrap: wrap; align-items: center;
     justify-content: space-between; gap: var(--s6);
     padding: var(--s7); box-shadow: 6px 6px 0 var(--black);
+  }
+  .reg-card:hover {
+    transform: translate(6px, 6px);
+    box-shadow: 0 0 0 transparent;
   }
   .reg-heading { font-size: var(--text-2xl); margin-bottom: var(--s3); }
   .reg-meta, .reg-location { font-size: var(--text-sm); color: var(--text-mid); margin-bottom: var(--s2); }
