@@ -87,5 +87,7 @@ schedule:
       - title: NITA REGULATORY | IT SERVICE PROVIDER REGISTRATION (FEES)
         url: https://regulatory.nita.gov.gh/portal/regulatory/registration-of-it-firms
 
-photos: []
+photos:
+  - url: https://drive.google.com/drive/folders/1NblGjqakAaTWZ7SBvTZBsImvnpQzhXrQ?usp=sharing
+    type: folder
 videos: []
